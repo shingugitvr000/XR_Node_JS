@@ -33,7 +33,7 @@ app.post('/startConstruction' , (req, res) => {
 });
 
 app.get('/checkConstruction' , (req, res) => {
-    if(buildingUnderConstruction && new Date() >= buildingUnderConstruction)        //시간이 지났으면
+    if(buildingUnderConstuction && new Date() >= buildingUnderConstuction)        //시간이 지났으면
     {
         buildingUnderConstuction = null;                                           //시간 초기화
         let result = {
