@@ -27,6 +27,22 @@ app.get('/id',(req ,res)=>{
     res.send(result);
 });
 
+app.get('/userdata/list' , (req , res) => {         //유저 리스트 반환
+
+    let result = users.sort(function(a,b){          //ID 순서로 정렬
+            return b.id - a.id;
+    });
+
+    result = result.slice(0, users.length);         //유저 숫자만큼 배열 생성 0 ~ n-1
+
+    res.send({                                      //패킷을 완성해서 보낸다. 
+        cmd : 1101,
+        message : '',
+        result
+    });
+
+});
+
 app.post('/userdata' , (req ,res) => {
     const{id, data} = req.body;                 //Reqest Body에 Json 데이터가 들어오면 id, data에 연결
     console.log(id,data);
