@@ -46,6 +46,45 @@ public class LoginManager : MonoBehaviour
         }
     }
 
+    public void SendAutienticatedRequest(string endpoint)
+    {
+        if(string.IsNullOrEmpty(token))
+        {
+            Debug.LogError("Token is missing");
+            return;
+        }
+
+        UnityWebRequest www = UnityWebRequest.Get(apiUrl + endpoint);
+        www.SetRequestHeader("Authorization", token);   
+        
+        StartCoroutine(SendRequest(www));
+    }
+    IEnumerator SendRequest(UnityWebRequest webRequest)
+    {
+        yield return webRequest.SendWebRequest();
+
+        if (webRequest.result == UnityWebRequest.Result.ConnectionError ||
+            webRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.Log("서버 통신 에러 " + webRequest.downloadHandler.text);
+        }
+        else
+        {
+            Debug.Log("Request successful" + webRequest.downloadHandler.text);
+        }
+    }
+
+    public void SendAuthenticatedRequestToProtectedEndpoin()
+    {
+        if (string.IsNullOrEmpty(token))
+        {
+            Debug.LogError("Token is missing");
+            return;
+        }
+
+        SendAutienticatedRequest("/protected");
+    }
+
     [System.Serializable]
     private class ResponseData
     {

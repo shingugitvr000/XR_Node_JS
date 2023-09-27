@@ -48,6 +48,10 @@ app.post('/login' , (req , res) => {
 
 });
 
+app.get('/protected' , verifyToken , (req, res) => {
+    res.status(200).json({message: 'This is a protected endpoint' , user: req.decoded});
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT , ()=> {
     console.log('Server is running on port 3000');
