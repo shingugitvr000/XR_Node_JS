@@ -30,7 +30,7 @@ public class UnityToNode : MonoBehaviour
     {
         this.btnPostExample.onClick.AddListener(() =>
         {
-            var url = string.Format("{0}:{1}/{2}", host, port, postUrl);      //URL 林家 积己
+            var url = string.Format("{0}/{2}", host, port, postUrl);      //URL 林家 积己
             Debug.Log(url);
 
             var req = new Protocols.Packets.req_data();                         //Req 橇肺配妮 单捞磐 涝仿
@@ -50,7 +50,7 @@ public class UnityToNode : MonoBehaviour
 
         this.btnGetExample.onClick.AddListener(() =>
         {
-            var url = string.Format("{0}:{1}/{2}", host, port, idUrl);      //URL 林家 积己
+            var url = string.Format("{0}/{2}", host, port, idUrl);      //URL 林家 积己
             Debug.Log(url);
 
             StartCoroutine(this.GetData(url, (raw) =>
@@ -64,7 +64,7 @@ public class UnityToNode : MonoBehaviour
 
         this.btnResDataExample.onClick.AddListener(() =>
         {
-            var url = string.Format("{0}:{1}/{2}", host, port, resDataUrl);      //URL 林家 积己
+            var url = string.Format("{0}/{2}", host, port, resDataUrl);      //URL 林家 积己
             Debug.Log(url);
 
             StartCoroutine(this.GetData(url, (raw) =>
@@ -81,7 +81,7 @@ public class UnityToNode : MonoBehaviour
 
         this.btnConstruction_Post.onClick.AddListener(() =>             //扒汲 矫累 POST 烹脚 
         {
-            var url = string.Format("{0}:{1}/{2}", host, port, startConstructionUrl);      //URL 林家 积己
+            var url = string.Format("{0}/{2}", host, port, startConstructionUrl);      //URL 林家 积己
             Debug.Log(url);
 
             var req = new Protocols.Packets.req_data();                                 //橇肺配妮阑 父甸绢霖促. 
@@ -100,7 +100,7 @@ public class UnityToNode : MonoBehaviour
 
         this.btnConstruction_Get.onClick.AddListener(() =>              //扒汲 犬牢 GET 烹脚
         {
-            var url = string.Format("{0}:{1}/{2}", host, port, checkConstructionUrl);      //URL 林家 积己
+            var url = string.Format("{0}/{2}", host, port, checkConstructionUrl);      //URL 林家 积己
             Debug.Log(url);
 
             StartCoroutine(this.GetData(url, (raw) =>
